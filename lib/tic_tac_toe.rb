@@ -81,7 +81,8 @@ class TicTacToe
       turn
     end
     
-    if won?
+    if draw?
+      
       winner
     elsif draw?
       puts "DRAW!"
