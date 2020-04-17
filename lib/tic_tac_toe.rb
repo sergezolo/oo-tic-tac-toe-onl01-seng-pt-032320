@@ -6,10 +6,6 @@ class TicTacToe
     @board = Array.new(9, " ")
   end
  
-  #def initialize(board = nil)
-  #  @board = board || Array.new(9, " ")
-  #end
-  
   def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
@@ -67,13 +63,21 @@ class TicTacToe
   def draw?
     !won? && full?
   end
-
+  
+  def over?
+    won? || full?
+  end
+  
+  def winner
+    if @board[won?[0]] == "X" || @board[won?[0]] == "O"
+      @board[won?[0]]
+    else
+      nil
+    end
+  end
   
 
- 
- 
 
- 
-
-  
 end
+
+ 
