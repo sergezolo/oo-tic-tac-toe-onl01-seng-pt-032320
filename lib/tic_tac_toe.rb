@@ -80,10 +80,13 @@ class TicTacToe
     until over?
       turn
     end
-  end
     
-
-
+    if won? 
+      winner
+    elsif draw?
+      puts "DRAW!"
+    end
+  end
 end
 
  
