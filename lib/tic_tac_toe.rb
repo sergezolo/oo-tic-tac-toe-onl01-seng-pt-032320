@@ -52,12 +52,13 @@ class TicTacToe
   
   def won?
     WIN_COMBINATIONS.find do |win_combo|
-      @board[win_combo[0]] == @board[win_combo[1]] && @board[win_combo[1]] == @board[win_combo[2]]
+      position_taken?(win_combo[0]) && @board[win_combo[0]] == @board[win_combo[1]] && @board[win_combo[1]] == @board[win_combo[2]]
     end
   end
   
   def full?
-    !(@board.any? {|position| position == " "})
+    #!(@board.any? {|position| position == " "})
+    @board.all? {|token| token == "X" || token == "O"}
   end
   
   def draw?
@@ -65,19 +66,31 @@ class TicTacToe
   end
   
   def over?
-    won? || full?
+    won? || draw?
   end
   
   def winner
-    if @board[won?[0]] == "X" || @board[won?[0]] == "O"
+    if won?
       @board[won?[0]]
     else
       nil
     end
   end
   
-
-
+  def play
+    until over?
+      turn
+    end
+    
+    if draw?
+      puts "Cat's Game!"
+    elsif winner == "X"
+      puts "Congratulations X!"
+    elsif winner == "O"
+      puts "Congratulations O!"
+    end
+    
+  end
 end
 
  
