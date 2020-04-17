@@ -76,6 +76,11 @@ class TicTacToe
     end
   end
   
+  def play
+    @board.until !over?
+      turn
+    end
+    
 
 
 end
